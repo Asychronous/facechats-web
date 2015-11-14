@@ -9,6 +9,7 @@ $(document).ready(function() {
     FB.getLoginStatus(function(response) {
       checkLoginState();
     });
+
   };
   // Load the SDK asynchronously
   (function(d, s, id){
@@ -50,6 +51,7 @@ $(document).ready(function() {
       $('.login-msg').append('<br/><br/><a href="#tutor" class="no-text-decoration"><span class="label label-error" outline>See the guide first below :)<span></a> <br/><br/> and then you can ...<br/><br/> <a href="https://www.facebook.com/profile.php?id=100010661648426" target="_blank" style="text-decoration: none;"><span class="label label-primary" outline>Start chatting with stranger :)</span></a><br/>');
       $('.fb-login-btn').css('display', 'none');
       $('.fb-logout-btn').css('display', '');
+      // console.log(response);
       // console.log('Successful login for: ' + response.name);
       // console.log('id:'+response.id);
       // console.log('birthday:'+response.birthday);
@@ -61,6 +63,7 @@ $(document).ready(function() {
       // console.log('email:'+response.email);
       // console.log('picture:'+response.picture);
       user_data = response;
+
       $.ajax({
           url: '/users/signin',
           data: user_data,
@@ -68,11 +71,11 @@ $(document).ready(function() {
           success: function(msg){
               // alert(msg);
           },
-
            error:function(xhr, ajaxOptions, thrownError){
               // alert(thrownError);
-           }
+           },
       });
+
     });
   }
 
