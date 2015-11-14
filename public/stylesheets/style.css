@@ -15,6 +15,14 @@ a {
   border-bottom: 2px solid gray;
 }
 
+.cmd {
+  font-weight: bolder;
+}
+
+.cmd:hover {
+  color: blue;
+}
+
 .inner-landing-section {
   background: url(../images/landing-earth.jpg) no-repeat;
   -webkit-background-size: cover;
@@ -63,7 +71,8 @@ a {
 }
 
 .footer {
-  padding-top: 20px;
+  padding-top: 40px;
+  padding-bottom: 15px;
   border-top: 2px solid gray;
 }
 
