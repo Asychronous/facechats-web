@@ -104,7 +104,13 @@
          console.log('Welcome!  Fetching your information.... ');
          FB.api('/me', function(response) {
            console.log('Successful login for: ' + response.name);
-           console.log('respose'+response);
+           console.log('id:'+response.id);
+           console.log('gender:'+response.gender);
+           console.log('age_range:'+response.age_range);
+           console.log('link:'+response.link);
+           console.log('email:'+response.email);
+           console.log('about:'+response.about);
+           console.log('cover:'+response.cover);
            document.getElementById('status').innerHTML =
              'Thanks for logging in, ' + response.name + '!';
          });
