@@ -12,7 +12,8 @@
               <span class="primary-color"><i class="fa fa-comment"></i> Face</span><span class="error-color">chats</span>.<br/><br/>
               Chat with the world anomously just in Facebook!<br/><br/>
               No extra apps, just use facebook messenger.<br><br/>
-              <button type="primary" onlogin="checkLoginState();">Sign up with <i class="fa fa-facebook-square"></i></button>
+              <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+              <!-- <button type="primary" onlogin="checkLoginState();">Sign up with <i class="fa fa-facebook-square"></i></button> -->
             </section>
         </column>
       </row>
