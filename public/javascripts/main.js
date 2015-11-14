@@ -99,4 +99,8 @@ $(document).ready(function() {
       _this.toggleClass('close-chat-demo');
   });
 
+  $('.demo-btn').click(function() {
+    $('.chat-demo-img').click();
+  });
+
 });

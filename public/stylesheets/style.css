@@ -35,7 +35,7 @@ a {
 
 .chat-demo-img {
   position: fixed;
-  bottom: 0;
+  bottom: -305px;
   right: 20px;
   -moz-box-shadow:4px -4px 3px rgba(20%,20%,40%,0.5);
   -webkit-box-shadow:4px -4px 3px rgba(20%,20%,40%,0.5);
@@ -48,7 +48,7 @@ a {
 }
 
 .close-chat-demo {
-  bottom: -305px !important;
+  bottom: 0px !important;
 }
 
 @media screen and (max-width: 630px)
@@ -57,6 +57,7 @@ a {
     position: relative;
     display: block;
     margin: 0 auto;
+    bottom: 0 !important;
   }
 }
 
