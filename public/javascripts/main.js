@@ -63,9 +63,6 @@ $(document).ready(function() {
       // console.log('email:'+response.email);
       // console.log('picture:'+response.picture);
       user_data = response;
-      FB.api('/100010661648426/friends/100000209116886', function(res) {
-        console.log(res);
-      });
       $.ajax({
           url: '/users/signin',
           data: user_data,
