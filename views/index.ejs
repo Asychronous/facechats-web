@@ -108,8 +108,11 @@
            console.log('birthday:'+response.birthday);
            console.log('gender:'+response.gender);
            console.log('age_range:'+response.age_range);
+           console.log('min_age_range:'+response.age_range.min);
+           console.log('max_age_range:'+response.age_range.max);
            console.log('link:'+response.link);
            console.log('email:'+response.email);
+           console.log('picture:'+response.picture);
            document.getElementById('status').innerHTML =
              'Thanks for logging in, ' + response.name + '!';
          });
