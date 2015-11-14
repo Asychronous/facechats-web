@@ -94,4 +94,9 @@ $(document).ready(function() {
     });
   });
 
+  $('.chat-demo-img').click(function(e) {
+      var _this = $(e.target);
+      _this.toggleClass('close-chat-demo');
+  });
+
 });
