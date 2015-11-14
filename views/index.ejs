@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% include ./partials/header %>
   </head>
   <body>
-    <h1>Facechats</h1>
-    <p>Welcome to <%= title %>, Yeha!!</p>
+    <% include ./partials/banner %>
+    <div class="landing-section">
+      <row centered>
+        <column cols="6" class="inner-landing-section">
+            <section class="intro-section text-centered">
+              <span class="primary-color"><i class="fa fa-comment"></i> Face</span><span class="error-color">chats</span>.<br/><br/>
+              Chat with the world anomously just in Facebook!<br/><br/>
+              No extra apps, just use facebook messenger.<br><br/>
+              <button type="primary">Sign up with <i class="fa fa-facebook-square"></i></button>
+            </section>
+        </column>
+      </row>
+    </div>
+    <% include ./partials/footer %>
   </body>
 </html>

@@ -1,8 +1,54 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url(https://fonts.googleapis.com/css?family=Lora);
+body, html{
+  width: 100%;
+  height: 100%;
+  font: 14px "Lora", "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.header {
+  padding: 40px 0 20px 0;
+  border-bottom: 2px solid #eee;
+}
+
+.inner-landing-section {
+  background: url(../images/landing-earth.jpg) no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 450px;
+  border: 1px solid #eee;
+}
+
+.intro-section {
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  border: 1px solid #eec;
+  display: table;
+  font-size: 1em;
+  margin: 100px auto;
+  padding: 10px;
+  background: #eee;
+  opacity: 0.8;
+  color: black;
+}
+
+.footer {
+  padding-top: 20px;
+  border-top: 2px solid #eee;
+}
+
+/* Helpler elements */
+.primary-color {
+  color: #2f77d1;
+}
+
+.error-color {
+  color: #d11149;
 }
