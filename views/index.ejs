@@ -8,17 +8,21 @@
   <div class="landing-section">
     <row centered>
       <column cols="6" class="inner-landing-section">
+        <!-- Introduction section -->
         <section class="intro-section text-centered">
           <span class="primary-color"><i class="fa fa-comment"></i> Face</span><span class="error-color">chats</span>.<br/><br/>
           Chat with the world anomously just in Facebook!<br/><br/>
           No extra apps, just use facebook messenger.<br><br/>
-          <fb:login-button class="hidden-fb-login-btn" scope="public_profile,email" onlogin="checkLoginState();" style="display:none;"></fb:login-button>
-          <span class="login-msg error-color"></span><br/>
-          <button class="fb-login-btn" type="primary">Sign up with <i class="fa fa-facebook-square"></i></button>
+          <span class="login-msg error-color">Loading information of Facebook.</span>
+          <br/>
+          <button class="fb-login-btn" type="primary" style="display:none;">Sign up with <i class="fa fa-facebook-square"></i></button>
+          <button class="fb-logout-btn" type="primary" style="display:none;">Log out <i class="fa fa-facebook-square"></i></button>
         </section>
+
       </column>
     </row>
   </div>
+  <img class="chat-demo-img" src="./images/record.gif" alt="" />
     <% include ./partials/footer %>
     <script>
       $(document).ready(function() {
@@ -30,7 +34,7 @@
           });
 
           FB.getLoginStatus(function(response) {
-            statusChangeCallback(response);
+            checkLoginState();
           });
         };
         // Load the SDK asynchronously
@@ -43,59 +47,66 @@
         }(document, 'script', 'facebook-jssdk'));
 
         // This is called with the results from from FB.getLoginStatus().
-        function statusChangeCallback(response) {
-          console.log('statusChangeCallback');
-          console.log(response);
-          // The response object is returned with a status field that lets the
-          // app know the current login status of the person.
-          // Full docs on the response object can be found in the documentation
-          // for FB.getLoginStatus().
+        function loginUser(response) {
+          FB.login(checkStatus, {scope: 'public_profile,email'});
+        }
+
+        function checkStatus(response) {
+          var $loginMsg = $('.login-msg');
+          var $fbLoginBtn = $('.fb-login-btn');
+
           if (response.status === 'connected') {
-            // Logged into your app and Facebook.
-            testAPI();
+            getUserInfor();
+            $loginMsg.html('');
           } else if (response.status === 'not_authorized') {
-            // The person is logged into Facebook, but not your app.
-            document.getElementById('status').innerHTML = 'Please log ' +
-            'into this app.';
+            $fbLoginBtn.css('display', '');
+            $loginMsg.html('');
           } else {
-            // The person is not logged into Facebook, so we're not sure if
-            // they are logged into this app or not.
-            document.getElementById('status').innerHTML = 'Please log ' +
-            'into Facebook.';
+            $fbLoginBtn.css('display', '');
+            $loginMsg.html('');
           }
         }
 
+       function checkLoginState() {
+          FB.getLoginStatus(checkStatus);
+        }
 
-         function checkLoginState() {
-            FB.getLoginStatus(function(response) {
-              statusChangeCallback(response);
-            });
-          }
+        function getUserInfor() {
+          FB.api('/me',{fields: "id,about,age_range,picture,bio,birthday,context,email,first_name,gender,hometown,link,location,middle_name,name,timezone,website,work"}, function(response) {
+            $('.login-msg').html('You have been registered as ' + response.name);
+            $('.login-msg').append('<br/><br/><a style="cursor: pointer;"><span class="label label-primary" outline>Start chatting with stranger.</span></a><br/>');
+            $('.fb-login-btn').css('display', 'none');
+            $('.fb-logout-btn').css('display', '');
+            console.log('Successful login for: ' + response.name);
+            console.log('id:'+response.id);
+            console.log('birthday:'+response.birthday);
+            console.log('gender:'+response.gender);
+            console.log('age_range:'+response.age_range);
+            console.log('min_age_range:'+response.age_range.min);
+            console.log('max_age_range:'+response.age_range.max);
+            console.log('link:'+response.link);
+            console.log('email:'+response.email);
+            console.log('picture:'+response.picture);
+          });
+        }
 
-          function testAPI() {
-            console.log('Welcome!  Fetching your information.... ');
-            FB.api('/me',{fields: "id,about,age_range,picture,bio,birthday,context,email,first_name,gender,hometown,link,location,middle_name,name,timezone,website,work"}, function(response) {
-              $('.login-msg').html('You have been login in.');
-              $('.fb-login-btn').html('Check your info.');
-              console.log('Successful login for: ' + response.name);
-              console.log('id:'+response.id);
-              console.log('birthday:'+response.birthday);
-              console.log('gender:'+response.gender);
-              console.log('age_range:'+response.age_range);
-              console.log('min_age_range:'+response.age_range.min);
-              console.log('max_age_range:'+response.age_range.max);
-              console.log('link:'+response.link);
-              console.log('email:'+response.email);
-              console.log('picture:'+response.picture);
-            });
-          }
+        $('.fb-login-btn').click(function(e) {
+          e.preventDefault();
+          loginUser();
+        });
 
-          $('.fb-login-btn').click(function(e) {
-            e.preventDefault();
-            console.log('click');
-            $('.hidden-fb-login-btn').click();
+        $('.fb-logout-btn').click(function(e) {
+          FB.logout(function(res) {
+            var $loginMsg = $('.login-msg');
+            var $fbLoginBtn = $('.fb-login-btn');
+
+            $fbLoginBtn.css('display', '');
+            $('.fb-logout-btn').css('display', 'none');
+            $loginMsg.html('');
           });
         });
-      </script>
+
+      });
+    </script>
   </body>
   </html>
