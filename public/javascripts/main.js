@@ -48,7 +48,7 @@ $(document).ready(function() {
   function getUserInfor() {
     FB.api('/me',{fields: "id,about,age_range,picture,bio,birthday,context,email,first_name,gender,hometown,link,location,middle_name,name,timezone,website,work,cover"}, function(response) {
       $('.login-msg').html('You have been logined as ' + response.name);
-      $('.login-msg').append('<br/><br/><a href="#tutor" class="no-text-decoration"><span class="label label-error" outline>See the guide first below.<span></a> <br/><br/> and then you can ...<br/><br/> <a href="https://www.facebook.com/profile.php?id=100010661648426" target="_blank" style="text-decoration: none;"><span class="label label-primary" outline>Start chatting with stranger using Venus bot.</span></a><br/>');
+      $('.login-msg').append('<br/><br/><a href="#tutor" class="no-text-decoration"><span class="label label-error" outline>See the guide first below.<span></a> <br/><br/> and then you can ...<br/><br/> <a href="https://www.facebook.com/messages/100010661648426" target="_blank" style="text-decoration: none;"><span class="label label-primary" outline>Start chatting with stranger using Venus bot.</span></a><br/>');
       $('.fb-login-btn').css('display', 'none');
       $('.fb-logout-btn').css('display', '');
       // console.log(response);
